@@ -23,7 +23,7 @@ public class Conversion {
             backoff = @Backoff(delay = 1000, multiplier = 2))
     public Mono<String> getConversion() {
         try {
-            return webClient.get().uri(uriBuilder -> uriBuilder.path(api.getEndpoint())
+            return webClient.get().uri(uriBuilder -> uriBuilder.path("/latest")
                     .queryParam("access_key", api.getKey())
                     .build()).retrieve().bodyToMono(String.class);
         } catch (HttpClientErrorException e) {

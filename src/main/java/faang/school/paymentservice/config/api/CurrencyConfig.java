@@ -10,6 +10,5 @@ import org.springframework.stereotype.Component;
 public class CurrencyConfig {
 
     private String key;
-    private String endpoint;
 
 }

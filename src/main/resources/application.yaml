@@ -18,7 +18,6 @@ scheduling:
 
 currency:
   key: 08a9cf90a2931b1ffea4614703e7f54f
-  endpoint: https://api.exchangeratesapi.io/v1/latest
 
 logging:
   level:

@@ -15,7 +15,9 @@ public class WebClientConfig {
 
     @Bean
     public WebClient webClient(WebClient.Builder builder) {
-        return builder.build();
+        return builder
+                .baseUrl("https://api.exchangeratesapi.io/v1/")
+                .build();
     }
 
 }
