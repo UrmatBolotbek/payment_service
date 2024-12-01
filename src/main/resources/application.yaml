@@ -18,6 +18,8 @@ currency-scheduling:
 
 currency:
   key: 08a9cf90a2931b1ffea4614703e7f54f
+  base-url: https://api.exchangeratesapi.io/v1
+  path: /latest
 
 logging:
   level:

@@ -21,9 +21,9 @@ public class Conversion {
     @Retryable(retryFor = ResourceAccessException.class, maxAttempts = 4,
             backoff = @Backoff(delay = 1000, multiplier = 2))
     public Mono<String> getConversion() {
-        WebClient webClient = WebClient.builder().baseUrl("https://api.exchangeratesapi.io/v1").build();
+        WebClient webClient = WebClient.builder().baseUrl(api.getBase_url()).build();
         try {
-            return webClient.get().uri(uriBuilder -> uriBuilder.path("/latest")
+            return webClient.get().uri(uriBuilder -> uriBuilder.path(api.getPath())
                     .queryParam("access_key", api.getKey())
                     .build()).retrieve().bodyToMono(String.class);
         } catch (HttpClientErrorException e) {

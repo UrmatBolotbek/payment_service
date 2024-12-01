@@ -12,5 +12,7 @@ import org.springframework.stereotype.Component;
 public class CurrencyConfig {
 
     private String key;
+    private String base_url;
+    private String path;
 
 }
