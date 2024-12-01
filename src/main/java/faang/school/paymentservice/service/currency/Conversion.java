@@ -16,12 +16,12 @@ import reactor.core.publisher.Mono;
 @Slf4j
 public class Conversion {
 
-    private final WebClient webClient;
     private final CurrencyConfig api;
 
     @Retryable(retryFor = ResourceAccessException.class, maxAttempts = 4,
             backoff = @Backoff(delay = 1000, multiplier = 2))
     public Mono<String> getConversion() {
+        WebClient webClient = WebClient.builder().baseUrl("https://api.exchangeratesapi.io/v1").build();
         try {
             return webClient.get().uri(uriBuilder -> uriBuilder.path("/latest")
                     .queryParam("access_key", api.getKey())
