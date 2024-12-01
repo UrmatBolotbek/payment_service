@@ -9,13 +9,8 @@ import org.springframework.context.annotation.Configuration;
 public class WebClientConfig {
 
     @Bean
-    public WebClient.Builder webClientBuilder() {
-        return WebClient.builder();
-    }
-
-    @Bean
-    public WebClient webClient(WebClient.Builder builder) {
-        return builder
+    public WebClient webClient() {
+        return WebClient.builder()
                 .baseUrl("https://api.exchangeratesapi.io/v1/")
                 .build();
     }

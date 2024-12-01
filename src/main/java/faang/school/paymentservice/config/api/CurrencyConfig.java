@@ -1,11 +1,13 @@
 package faang.school.paymentservice.config.api;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 @Component
-@Data
+@Setter
+@Getter
 @ConfigurationProperties(prefix = "currency")
 public class CurrencyConfig {
 

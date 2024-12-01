@@ -1,6 +1,5 @@
 package faang.school.paymentservice.scheduled;
 
-import faang.school.paymentservice.config.scheduling.SchedulingProperties;
 import faang.school.paymentservice.service.currency.CurrencyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -12,9 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class CurrencyRateFetcher {
 
     private final CurrencyService currencyService;
-    private final SchedulingProperties schedulingProperties;
 
-    @Scheduled(cron = "#{schedulingProperties.cron}")
+    @Scheduled(cron = "${currency-scheduling.cron}")
     public String conversionOfCurrency() {
        return currencyService.conversionOfCurrency();
     }

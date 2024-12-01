@@ -13,7 +13,7 @@ spring:
 server:
   port: 9080
 
-scheduling:
+currency-scheduling:
   cron: "0 0 1 * * *"
 
 currency:
