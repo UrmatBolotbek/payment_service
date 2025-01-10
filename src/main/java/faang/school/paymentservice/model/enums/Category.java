@@ -5,5 +5,5 @@ public enum Category {
     SERVICE_PAYMENT,
     PREMIUM_SUBSCRIPTION,
     REFUND,
-    OTHER;
+    OTHER
 }
