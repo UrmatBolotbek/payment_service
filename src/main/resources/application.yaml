@@ -7,20 +7,43 @@ spring:
 
   data:
     redis:
-          host: localhost
-          port: 6379
+      host: localhost
+      port: 6379
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+
+app:
+  clearing:
+    job:
+      interval: 100000
 
 server:
   port: 9080
 
-currency-scheduling:
-  cron: "0 0 1 * * *"
-
-currency:
-  key: 08a9cf90a2931b1ffea4614703e7f54f
-  base-url: https://api.exchangeratesapi.io/v1
-  path: /latest
+currency-api:
+  url: https://api.exchangeratesapi.io/v1/
+  api-key: 08a9cf90a2931b1ffea4614703e7f54f
+  base-currency: EUR
+  redis-key: currencyRates
+  cron: "00 30 09 * * *"
+  timeout:
+    connection: 5000
+    read: 1000
 
 logging:
   level:
     root: info
+
+retry:
+  retry: 5
+  delay: 3000
