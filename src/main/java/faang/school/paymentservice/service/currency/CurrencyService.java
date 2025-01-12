@@ -84,10 +84,7 @@ public class CurrencyService {
         log.info("Fetching currency rates from API: {}latest", currencyApiProperties.getUrl());
 
         return currencyWebClient.get()
-                .uri(uriBuilder -> uriBuilder
-                        .path("latest")
-                        .queryParam("access_key", currencyApiProperties.getApiKey())
-                        .build())
+                .uri("latest?access_key=%s".formatted(currencyApiProperties.getApiKey()))
                 .retrieve()
                 .bodyToMono(CurrencyRatesResponse.class)
                 .timeout(Duration.ofMillis(currencyApiProperties.getTimeout().getRead()))

@@ -54,7 +54,7 @@ public class CurrencyServiceTest {
 
     private static final String BASE_CURRENCY = "EUR";
     private static final String URL = "https://api.exchangeratesapi.io/v1/";
-    private static final String API_KEY = "test-api-key";
+    private static final String API_KEY = "QN0WSBBHFMfIp45JdHUyuA9gYRfphUi5";
     private static final String REDIS_KEY = "currencyRates";
     private static final int RETRY_COUNT = 2;
     private static final int RETRY_DELAY = 1000;

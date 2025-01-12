@@ -1,0 +1,38 @@
+spring:
+  data:
+    redis:
+      channels:
+        auth-payment:
+          request: auth-payment-request
+          response: auth-payment-response
+        cancel-payment:
+          request: cancel-payment-request
+          response: cancel-payment-response
+        clearing-payment:
+          request: clearing-payment-request
+          response: clearing-payment-response
+        error-payment:
+          request: error-payment-request
+          response: error-payment-response
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  liquibase:
+    enabled: true
+
+retry:
+  retry: 1
+  delay: 0
+
+currency-api:
+  url: http://localhost:12123/
+  api-key: TEST_API_KEY
+  base-currency: EUR
+  redis-key: currencyRates
+  cron: "00 30 09 * * *"
+  timeout:
+    connection: 5000
+    read: 1000

@@ -59,7 +59,6 @@ class PendingOperationServiceTest {
         pendingOperationDto = PendingOperationDto.builder()
                 .sourceAccountId(operation.getSourceAccountId())
                 .targetAccountId(operation.getTargetAccountId())
-                .idempotencyKey(operation.getIdempotencyKey())
                 .amount(operation.getAmount())
                 .currency("EUR")
                 .category(Category.OTHER.name())
