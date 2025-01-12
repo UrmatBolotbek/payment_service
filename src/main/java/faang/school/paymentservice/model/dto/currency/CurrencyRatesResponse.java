@@ -1,4 +1,4 @@
-package faang.school.paymentservice.model.dto;
+package faang.school.paymentservice.model.dto.currency;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package faang.school.paymentservice.model.dto;
+package faang.school.paymentservice.model.dto.operation;
 
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Future;
@@ -23,9 +23,6 @@ public class PendingOperationDto {
 
     @NotNull(message = "AccountTo ID is required")
     private UUID targetAccountId;
-
-    @NotBlank(message = "Idempotency key is required")
-    private String idempotencyKey;
 
     @NotNull(message = "Amount is required")
     @DecimalMin(value = "0.01", message = "Amount must be positive")

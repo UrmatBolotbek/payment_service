@@ -1,9 +1,7 @@
 package faang.school.paymentservice.controller;
 
-import faang.school.paymentservice.model.dto.PendingOperationDto;
-import faang.school.paymentservice.model.dto.PendingOperationResponseDto;
-import faang.school.paymentservice.mapper.PendingOperationMapper;
-import faang.school.paymentservice.model.entity.PendingOperation;
+import faang.school.paymentservice.model.dto.operation.PendingOperationDto;
+import faang.school.paymentservice.model.dto.operation.PendingOperationResponseDto;
 import faang.school.paymentservice.service.operation.PendingOperationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -21,12 +19,10 @@ import java.util.UUID;
 @RestController
 public class PendingOperationController {
     private final PendingOperationService pendingOperationService;
-    private final PendingOperationMapper pendingOperationMapper;
 
     @PostMapping("/initiate")
     public ResponseEntity<UUID> initiateOperation(@RequestBody PendingOperationDto operationDto) {
-        PendingOperation operation = pendingOperationMapper.toEntity(operationDto);
-        UUID operationId = pendingOperationService.initiateOperation(operation);
+        UUID operationId = pendingOperationService.initiateOperation(operationDto);
         return ResponseEntity.ok(operationId);
     }
 

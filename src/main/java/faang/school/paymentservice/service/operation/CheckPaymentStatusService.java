@@ -1,7 +1,7 @@
 package faang.school.paymentservice.service.operation;
 
 import faang.school.paymentservice.exception.ErrorOperationException;
-import faang.school.paymentservice.model.dto.PaymentStatusResponseDto;
+import faang.school.paymentservice.model.dto.operation.PaymentStatusResponseDto;
 import faang.school.paymentservice.model.entity.PendingOperation;
 import faang.school.paymentservice.model.enums.OperationStatus;
 import faang.school.paymentservice.repository.PendingOperationRepository;

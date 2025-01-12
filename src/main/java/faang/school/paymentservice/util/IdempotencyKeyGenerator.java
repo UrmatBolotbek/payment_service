@@ -1,6 +1,6 @@
 package faang.school.paymentservice.util;
 
-import faang.school.paymentservice.model.dto.PendingOperationDto;
+import faang.school.paymentservice.model.dto.operation.PendingOperationDto;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;

@@ -1,7 +1,9 @@
 package faang.school.paymentservice.service.operation;
 
 import faang.school.paymentservice.exception.OperationNotFoundException;
-import faang.school.paymentservice.model.dto.PendingOperationResponseDto;
+import faang.school.paymentservice.mapper.PendingOperationMapper;
+import faang.school.paymentservice.model.dto.operation.PendingOperationDto;
+import faang.school.paymentservice.model.dto.operation.PendingOperationResponseDto;
 import faang.school.paymentservice.model.entity.PendingOperation;
 import faang.school.paymentservice.model.enums.OperationStatus;
 import faang.school.paymentservice.repository.PendingOperationRepository;
@@ -19,12 +21,14 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 public class PendingOperationService {
+    private final PendingOperationMapper pendingOperationMapper;
     private final PendingOperationRepository pendingOperationRepository;
     private final PendingOperationValidator pendingOperationValidator;
     private final OperationMessageService operationMessageService;
 
     @Transactional
-    public UUID initiateOperation(PendingOperation operation) {
+    public UUID initiateOperation(PendingOperationDto operationDto) {
+        PendingOperation operation = pendingOperationMapper.toEntity(operationDto);
         pendingOperationValidator.validateIdempotencyKey(operation.getIdempotencyKey());
         pendingOperationRepository.saveAndFlush(operation);
         operationMessageService.sendOperationMessage(operation);
@@ -34,7 +38,7 @@ public class PendingOperationService {
 
     @Transactional
     public void cancelOperation(UUID operationId) {
-        PendingOperation operation = getOperationForProcessing(operationId, OperationStatus.AUTHORIZATION);
+        PendingOperation operation = getOperationForProcessing(operationId);
         updateOperationStatus(operation, OperationStatus.CANCELLATION);
         operationMessageService.sendOperationMessage(operation);
         log.info("Operation canceled with ID: {}", operationId);
@@ -42,7 +46,7 @@ public class PendingOperationService {
 
     @Transactional
     public void confirmOperation(UUID operationId, boolean isManual) {
-        PendingOperation operation = getOperationForProcessing(operationId, OperationStatus.AUTHORIZATION);
+        PendingOperation operation = getOperationForProcessing(operationId);
         try {
             if (isManual) {
                 pendingOperationValidator.validateManualConfirmation(operation);
@@ -78,8 +82,8 @@ public class PendingOperationService {
         return pendingOperationRepository.findByStatusAndClearScheduledAtBefore(OperationStatus.AUTHORIZATION, currentTime);
     }
 
-    private PendingOperation getOperationForProcessing(UUID operationId, OperationStatus status) {
-        return pendingOperationRepository.findByIdAndStatus(operationId, status)
+    private PendingOperation getOperationForProcessing(UUID operationId) {
+        return pendingOperationRepository.findByIdAndStatus(operationId, OperationStatus.AUTHORIZATION)
                 .orElseThrow(() -> new OperationNotFoundException("Operation not found or in invalid status"));
     }
 }

@@ -1,7 +1,7 @@
 package faang.school.paymentservice.mapper;
 
 import faang.school.paymentservice.model.enums.Currency;
-import faang.school.paymentservice.model.dto.PendingOperationDto;
+import faang.school.paymentservice.model.dto.operation.PendingOperationDto;
 import faang.school.paymentservice.model.entity.PendingOperation;
 import faang.school.paymentservice.util.IdempotencyKeyGenerator;
 import org.mapstruct.Mapper;

@@ -1,4 +1,4 @@
-package faang.school.paymentservice.model.dto;
+package faang.school.paymentservice.model.dto.operation;
 
 import faang.school.paymentservice.model.enums.AccountBalanceStatus;
 import faang.school.paymentservice.model.enums.OperationStatus;

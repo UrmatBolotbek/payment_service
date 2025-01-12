@@ -1,4 +1,4 @@
-package faang.school.paymentservice.model.dto;
+package faang.school.paymentservice.model.dto.operation;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import faang.school.paymentservice.model.enums.AccountBalanceStatus;

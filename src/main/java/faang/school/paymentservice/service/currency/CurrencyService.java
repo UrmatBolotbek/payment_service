@@ -3,7 +3,7 @@ package faang.school.paymentservice.service.currency;
 import faang.school.paymentservice.config.properties.CurrencyApiProperties;
 import faang.school.paymentservice.config.properties.RetryProperties;
 import faang.school.paymentservice.exception.CurrencyRateException;
-import faang.school.paymentservice.model.dto.CurrencyRatesResponse;
+import faang.school.paymentservice.model.dto.currency.CurrencyRatesResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;

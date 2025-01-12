@@ -2,7 +2,7 @@ package faang.school.paymentservice.service.operation;
 
 import faang.school.paymentservice.exception.ErrorOperationException;
 import faang.school.paymentservice.exception.InsufficientBalanceException;
-import faang.school.paymentservice.model.dto.CheckingPaymentStatusAndBalance;
+import faang.school.paymentservice.model.dto.operation.CheckingPaymentStatusAndBalance;
 import faang.school.paymentservice.model.entity.PendingOperation;
 import faang.school.paymentservice.model.enums.AccountBalanceStatus;
 import faang.school.paymentservice.model.enums.OperationStatus;
