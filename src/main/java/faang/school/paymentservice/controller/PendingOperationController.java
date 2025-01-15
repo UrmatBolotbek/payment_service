@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.UUID;
 
 @RequiredArgsConstructor
-@RequestMapping("/operations")
+@RequestMapping("/api/v1/operations")
 @RestController
 public class PendingOperationController {
     private final PendingOperationService pendingOperationService;
