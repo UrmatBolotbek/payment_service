@@ -1,14 +1,6 @@
 spring:
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: user
-    password: password
-
   data:
     redis:
-      host: localhost
-      port: 6379
       channels:
         auth-payment:
           request: auth-payment-request
@@ -24,39 +16,23 @@ spring:
           response: error-payment-response
 
   jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
 
   liquibase:
-    change-log: classpath:db/changelog/db.changelog-master.yaml
+    enabled: true
 
-app:
-  clearing:
-    job:
-      interval: 100000
-
-server:
-  port: 9080
+retry:
+  retry: 1
+  delay: 0
 
 currency-api:
-  url: https://api.exchangeratesapi.io/v1/
-  api-key: QN0WSBBHFMfIp45JdHUyuA9gYRfphUi5
+  url: http://localhost:12123/
+  api-key: TEST_API_KEY
   base-currency: EUR
   redis-key: currencyRates
   cron: "00 30 09 * * *"
   timeout:
     connection: 5000
     read: 1000
-
-logging:
-  level:
-    root: info
-
-retry:
-  retry: 5
-  delay: 3000
