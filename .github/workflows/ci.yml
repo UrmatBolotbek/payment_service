@@ -1,9 +1,9 @@
-name: Build project Griffon Stream-7
+name: Build project
 
 on:
   pull_request:
     branches:
-      - Griffon-master-stream7
+      - main
 
 jobs:
   build:
